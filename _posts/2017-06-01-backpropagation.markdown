@@ -1,8 +1,6 @@
 ---
-layout: "post"
 title: "Going deep into backpropagation"
 category: machine-learning
-
 ---
 
 <script type="text/javascript" async
