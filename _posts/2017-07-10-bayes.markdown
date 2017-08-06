@@ -1,6 +1,6 @@
 ---
 
-category: lda
+category: LDA
 ---
 
 
@@ -17,7 +17,6 @@ LDA is a unsupervised learning method which originates from Bayes Statitistics.
 ### BAYES FORMULA 
 
 **General  Shape of bayes formula in probability Theory**
-
 $$P(A|B)=\frac{P(B|A)P(A)}{P(B|A)P(A)+P(B|\neg A)P(\neg A)}$$
 
 [Thorough tutorial into Bayes rule in Probability Theory - includes likelihood ratio](https://arbital.com/p/bayes_frequency_diagram/?l=55z&pathId=20114)
