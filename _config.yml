@@ -244,7 +244,9 @@ defaults:
       share: true
       related: true
       incmath: true
-  # _pages
+
+defaults:
+  #_pages 
   - scope:
       path: ""
       type: pages
