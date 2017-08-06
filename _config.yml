@@ -235,6 +235,7 @@ compress_html:
 defaults:
   # _posts
   - scope:
+		
       path: ""
       type: posts
     values:
@@ -244,3 +245,5 @@ defaults:
       comments:  true
       share: true
       related: true
+      incmath: true
+	  
