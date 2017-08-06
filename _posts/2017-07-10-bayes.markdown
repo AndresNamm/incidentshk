@@ -1,6 +1,7 @@
 ---
-
 category: LDA
+sidebar:
+  nav: "lda"
 ---
 
 

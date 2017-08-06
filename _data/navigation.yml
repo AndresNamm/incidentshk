@@ -1,7 +1,5 @@
 # main links
 main:
-  - title: "Quick-Start Guide"
-    url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
   - title: "About"
     url: /about/
   # - title: "Sample Posts"
@@ -10,3 +8,11 @@ main:
   #   url: /collection-archive/
   # - title: "Sitemap"
   #   url: /sitemap/
+  
+  
+lda:
+  - title: "Bayes Method Background"
+    url: /lda/bayes/
+
+  - title: "Link 2 Title"
+    url: http://external-link.com
