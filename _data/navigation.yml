@@ -1,6 +1,7 @@
 # main links
 main:
   - title: "About"
+<<<<<<< HEAD
     url: {{baseurl}}/about/
   - title: Preprocessing
     url: {{baseurl}}/preprocessing/
@@ -8,6 +9,13 @@ main:
     url: {{baseurl}}/lda/
   - title: "Result Analysis"
     url: {{baseurl}}/result/
+=======
+    url: /about/
+  # - title: "Sample Posts"
+  #   url: /year-archive/
+  # - title: "Sample Collections"
+  #   url: /collection-archive/
+>>>>>>> parent of 2982d02... pointless
   # - title: "Sitemap"
   #   url: /sitemap/
   
@@ -15,9 +23,6 @@ main:
 lda:
   - title: "Bayes Method Background"
     url: /lda/bayes/
+
   - title: "Link 2 Title"
     url: http://external-link.com
-
-preprocessing-code:
-preprocessing-design:
-preprocessing-gothrough:

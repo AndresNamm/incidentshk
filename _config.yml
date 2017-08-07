@@ -7,7 +7,7 @@
 
 # Site Settings
 locale                   : "en"
-title                    : "HK Incident Detection"
+title                    : "Automatic Traffic Accident Detection in Hong Kong"
 title_separator          : "-"
 name                     : "Andres"
 description              : "An amazing website."
@@ -74,7 +74,7 @@ comments:
 author:
   name             : "Andres Namm"
   avatar           : "/assets/images/bio-photo.jpg"
-  bio              : "A student and a traveler who step by step tries to become greater at data engineering and speaking chinese. This project hopes to be one of those steps. For data engineering, ofcourse."
+  bio              : "I love rollerblading"
   location         : "Estonia, Käsmu"
   email            : "namm@connect.hku.hk"
   uri              : 
@@ -138,8 +138,8 @@ keep_files:
   - .svn
 encoding: "utf-8"
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
-#Breadcrubms gems
-breadcrumbs: true 
+
+
 # Conversion
 markdown: kramdown
 highlighter: rouge
@@ -177,7 +177,6 @@ timezone: # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 gems:
   - jekyll-paginate
   - jekyll-sitemap
-  - jekyll-archives
   - jekyll-gist
   - jekyll-feed
   - jemoji
@@ -186,7 +185,6 @@ gems:
 whitelist:
   - jekyll-paginate
   - jekyll-sitemap
-  - jekyll-archives
   - jekyll-gist
   - jekyll-feed
   - jemoji
@@ -211,16 +209,16 @@ tag_archive:
   type: liquid
   path: /tags/
 # https://github.com/jekyll/jekyll-archives
-jekyll-archives:
-  enabled:
-    - categories
-    - tags
-  layouts:
-    category: archive-taxonomy
-    tag: archive-taxonomy
-  permalinks:
-    category: /categories/:name/
-    tag: /tags/:name/
+# jekyll-archives:
+#   enabled:
+#     - categories
+#     - tags
+#   layouts:
+#     category: archive-taxonomy
+#     tag: archive-taxonomy
+#   permalinks:
+#     category: /categories/:name/
+#     tag: /tags/:name/
 
 # HTML Compression
 # - http://jch.penibelst.de/
@@ -263,71 +261,30 @@ defaults:
       comments: false
       sidebar:
         nav: "docs"
-  # _lda
+  # _recipes
   - scope:
       path: ""
-      type: lda
+      type: recipes
     values:
       layout: single
       author_profile: true
-      read_time: true
-      comments: true
       share: true
-      related: true
-      incmath: true
-  # _preprocessing-code
+      comments: true
+  # _pets
   - scope:
       path: ""
-      type: preprocessing-code
+      type: pets
     values:
       layout: single
-      read_time: false
-      author_profile: false
-      share: false
-      comments: false
-      sidebar:
-        nav: "preprocessing-code"
-  # _preprocessing-design
+      author_profile: true
+      share: true
+      comment: true
+  # _portfolio
   - scope:
       path: ""
-      type: preprocessing-design
+      type: portfolio
     values:
       layout: single
-      read_time: false
       author_profile: false
-      share: false
-      comments: false
-      sidebar:
-        nav: "preprocessing-design"
-  # _preprocessing-gothrough
-  - scope:
-      path: ""
-      type: preprocessing-gothrough
-    values:
-      layout: single
-      read_time: false
-      author_profile: false
-      share: false
-      comments: false
-      sidebar:
-        nav: "preprocessing-gothrough"
+share: true
 
-
-
-# Collections
-collections:
-  lda:
-    output: true
-    permalink: /:collection/:path/
-#  docs:
-#    output: true
-#    permalink: /:collection/:path/
-  preprocessing-code:
-    output: true
-    permalink: /:collection/:path/
-  preprocessing-design:
-    output: true
-    permalink: /:collection/:path/
-  preprocessing-gothrough:
-    output: true
-    permalink: /:collection/:path/

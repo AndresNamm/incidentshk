@@ -1,5 +1,5 @@
 ---
-
+layout: "post"
 title: "Linear Regression"
 category: machine-learning
 
