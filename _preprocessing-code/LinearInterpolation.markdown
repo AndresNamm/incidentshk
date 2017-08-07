@@ -14,7 +14,7 @@ The end result of the execution of this file is a large file with key value pair
 
 Result Example: 
 
-![inpolat](/assets/images/inpolat.png)
+![inpolat]({{site.baseurl}}/assets/images/inpolat.png)
 
 ## public void parseAndInterpolate(String filename, int fold) throws IOException, InterruptedException {
 

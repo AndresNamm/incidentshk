@@ -23,7 +23,7 @@ Record inf 2
 .......  
 
 Example:  
-![](/assets/images/mathresult.png)
+![]({{site.baseurl}}/assets/images/mathresult.png)
 
 Calls pretty much these methods in the order below. 
 

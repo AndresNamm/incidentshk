@@ -32,16 +32,17 @@ code files available at [Github](https://github.com/AndresNamm/) This is only a 
 
 ### Design 
 
-[Short Summary]({{page.url}}design) of Design Guidelines for this project with info about responsibility division, UML, testing and deployment
+[Short Summary]({{site.baseurl}}{{page.url}}design) of Design Guidelines for this project with info about responsibility division, UML, testing and deployment
 
 ### Gothrough tutorial
 
-[Here]({{page.url}}tutorial) you can find info about: 
 
-1. Understanding OSM and Qgis - the base map format for this project
-2. Segmenting roads into specific length and time segments
-3. Adding GPS records and accidents to specific segments
-4. Adding Speed panel data to specific segments
-5. Generating trajectories, interpolating speed records.  
 
- 
+
++ Here you can find info about: 
+{% for cookie in site.preprocessing-gothrough %}
+  <div class="cookie">
+    <h3><a href="{{site.baseurl}}{{ cookie.url }}">{{ cookie.title }}</a></h3>
+  </div>
+{% endfor %}
+

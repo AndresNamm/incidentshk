@@ -5,6 +5,6 @@ permalink: /lda/
 ---
 {% for cookie in site.lda %}
   <div class="cookie">
-    <h2><a href="{{ cookie.url }}">{{ cookie.title }}</a></h2>
+    <h2><a href="{{site.baseurl}}{{ cookie.url }}">{{ cookie.title }}</a></h2>
   </div>
 {% endfor %}
