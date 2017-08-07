@@ -2,10 +2,12 @@
 main:
   - title: "About"
     url: /about/
-  # - title: "Sample Posts"
-  #   url: /year-archive/
-  # - title: "Sample Collections"
-  #   url: /collection-archive/
+  - title: Preprocessing
+    url: /preprocessing/
+  - title: "LDA implementation"
+    url: /lda/
+  - title: "Result Analysis"
+    url: /result/
   # - title: "Sitemap"
   #   url: /sitemap/
   
@@ -13,6 +15,9 @@ main:
 lda:
   - title: "Bayes Method Background"
     url: /lda/bayes/
-
   - title: "Link 2 Title"
     url: http://external-link.com
+
+preprocessing-code:
+preprocessing-design:
+preprocessing-gothrough:
