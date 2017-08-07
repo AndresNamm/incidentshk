@@ -1,7 +1,7 @@
 ---
 title: "bgt/LabelData/LabelData.java"
 modified: 2017-08-01T15:54:02-04:00
-permalink: {{baseurl}}preprocessing/labeldata/
+permalink: /preprocessing/labeldata/
 category: Java-8
 ---
 

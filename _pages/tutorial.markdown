@@ -1,7 +1,7 @@
 ---
 layout: single
 title: Gothrough Tutorial for Data Preprocessing
-permalink: {{baseurl}}/preprocessing/tutorial/
+permalink: /preprocessing/tutorial/
 ---
 
 

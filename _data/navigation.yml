@@ -1,13 +1,13 @@
 # main links
 main:
   - title: "About"
-    url: {{baseurl}}/about/
+    url: /about/
   - title: Preprocessing
-    url: {{baseurl}}/preprocessing/
+    url: /preprocessing/
   - title: "LDA implementation"
-    url: {{baseurl}}/lda/
+    url: /lda/
   - title: "Result Analysis"
-    url: {{baseurl}}/result/
+    url: /result/
   # - title: "Sitemap"
   #   url: /sitemap/
   

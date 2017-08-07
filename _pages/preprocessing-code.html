@@ -1,0 +1,21 @@
+---
+layout: single
+title: Documentation for preprocessing software written in java and python
+permalink: /preprocessing/code/
+
+---
+
+
+{% assign groups = site.preprocessing-code | group_by: "category" | sort: "name" %}
+
+{% for group in groups %}
+
+    <div class="cookie">
+       <h2>{{ group.name }}</h2>
+    <div class="cookie">
+    {% for item in group.items %}
+       <div class="cookie">
+          <h3><a href="{{ item.url | relative_url }}">{{ item.title }}</a></h3>
+       <div class="cookie">
+    {%endfor%}
+{%endfor%}

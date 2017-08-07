@@ -12,7 +12,7 @@ title_separator          : "-"
 name                     : "Andres"
 description              : "An amazing website."
 url                      : "https://andresnamm.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-baseurl                  : "incidentshk" # the subpath of your site, e.g. "/blog"
+baseurl                  : "/incidentshk" # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 words_per_minute         : 200

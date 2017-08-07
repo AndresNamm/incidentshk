@@ -1,6 +1,6 @@
 ---
 title: About
-permalink: {{baseurl}}/about/
+permalink: /about/
 ---
 
 

@@ -1,7 +1,7 @@
 ---
 layout: single
 title: Data Preprocessing
-permalink: {{baseurl}}/preprocessing/
+permalink: /preprocessing/
 ---
 
 ## Introduction
