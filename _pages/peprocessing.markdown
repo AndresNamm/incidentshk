@@ -32,11 +32,11 @@ code files available at [Github](https://github.com/AndresNamm/) This is only a 
 
 ### Design 
 
-[Short Summary]({{page.url}}design) of Design Guidelines for this project with info about responsibility division, UML, testing and deployment
+[Short Summary]({{baseurl}}{{page.url}}design) of Design Guidelines for this project with info about responsibility division, UML, testing and deployment
 
 ### Gothrough tutorial
 
-[Here]({{page.url}}tutorial) you can find info about: 
+[Here]({{baseurl}}{{page.url}}tutorial) you can find info about: 
 
 1. Understanding OSM and Qgis - the base map format for this project
 2. Segmenting roads into specific length and time segments
