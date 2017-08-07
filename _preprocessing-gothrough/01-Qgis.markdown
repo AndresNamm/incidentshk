@@ -13,9 +13,22 @@ With mapping, its important to have a tool to visualize the documents to cross c
 
 ## Intorductory tutorial about coordinate systems 
 
-+ A coordinate system can be projected or 
+A coordinate system can be 
++ projected - coordinates in northin, easting. Example HK1980 Grid - The accidents file is in this format. These are coordinates converted to a flat paper kind of surface
++ spherical - coordinates in longitude, latitude. Example wgs84. Coordinates on the sphere. 
 
-[Good intro in pdf]({{site.baseurl}}/assets/files/maps.pdf)
+
+To conver files in HK 1980 coordinate to wgs1984 you can use this site. 
+https://www.geodetic.gov.hk/smo/en/tform/tform.aspx 
+
+__References__
+
+
+1. [Good intro pdf]({{site.baseurl}}/assets/files/maps.pdf)
+2. [Hk grid system info]({{site.baseurl}}/assets/files/hksystem.ppt)
+3. https://www.geodetic.gov.hk/smo/en/tform/tform.aspx  
+
+
 ## OSM 
 
 The cornestone of OSM are 
@@ -25,10 +38,20 @@ The cornestone of OSM are
 
 Nodes carry the geographic coordinates in the OSM data model. A way only gets geometry via the nodes that are members of it. Most of the time such nodes will be untagged and only serve to determine the way geometry. There are also nodes with tags, these show points of interests.
 
+
+You can extract OSM maps for different locations from. 
+https://mapzen.com/documentation/metro-extracts/tutorial/
+ 
+
+Analysis have been currently based on this [file]({{site.baseurl}}/assets/files/Hong_Kong_Highways-Merged-Remove_Deleted.osm)
+
 __References__
 
 1.  http://en.flossmanuals.net/openstreetmap/the-osm-data-model/
 2.  http://wiki.openstreetmap.org/wiki/Node
+
+
+
 
 
 ## QGIS 
@@ -61,4 +84,13 @@ If gives error, it might not import all data.
 ### Import from csv 
 
 http://www.qgistutorials.com/en/docs/importing_spreadsheets_csv.html
+
+
+### GROUPING AND COLOURING NODES
+
+
+https://gis.stackexchange.com/questions/20404/how-to-give-multiple-colors-to-features-within-a-single-shapefile
+
+tags for grouping nodes <tag k="ref" v="4"/> 
+http://wiki.openstreetmap.org/wiki/Key:ref
 			

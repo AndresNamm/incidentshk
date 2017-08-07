@@ -21,3 +21,13 @@ lda:
 preprocessing-code:
 preprocessing-design:
 preprocessing-gothrough:
+  - title: "OSM"
+    url: /preprocessing/osm
+  - title: "Segmenting routes"
+    url: /preprocessing/segmenting/
+  - title: Map matching
+    url: /preprocessing/mapmatching/
+  - title: Speedpanel matching
+    url: /preprocessing/mapmatchingsp/
+  - title: "Interpolation and Labeling"
+    url: /preprocessing/interlabel/

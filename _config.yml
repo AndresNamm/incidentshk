@@ -284,7 +284,7 @@ defaults:
       read_time: false
       author_profile: false
       share: false
-      comments: false
+      comments: true
       sidebar:
         nav: "preprocessing-code"
   # _preprocessing-design
@@ -296,7 +296,7 @@ defaults:
       read_time: false
       author_profile: false
       share: false
-      comments: false
+      comments: true
       sidebar:
         nav: "preprocessing-design"
   # _preprocessing-gothrough
@@ -308,7 +308,7 @@ defaults:
       read_time: false
       author_profile: false
       share: false
-      comments: false
+      comments: true
       sidebar:
         nav: "preprocessing-gothrough"
 

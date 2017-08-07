@@ -47,7 +47,8 @@ To follow separation of concerns principle as much as possible Ive decided to us
 
 ## Testing
 
-To avoid wasting time in later phases of training due to some random errors in the first phases I create simple automated tests. I use [Junit](http://junit.org/junit4/). for that.
+To avoid wasting time in later phases of training due to some random errors in the first phases I create simple automated tests. I use [Junit](http://junit.org/junit4/). for that. In addition to
+ that in the Test folder I also keep something called ManualTest.java. I use these for printing out examples of Data parsing test to visually identify that everything is in order where it is possible. 
  
 ## Deployment 
 

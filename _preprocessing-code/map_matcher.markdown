@@ -1,7 +1,7 @@
 ---
 title: "bgt/MapMatching/MapMatcher.java"
 modified: 2017-08-01T15:54:02-04:00
-permalink: /preprocessing/code/mapmatcher/
+permalink: /preprocessing/mapmatcher/
 category: Java-8
 ---
 

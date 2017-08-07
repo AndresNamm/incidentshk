@@ -5,47 +5,30 @@ excerpt: "How the theme is organized and what all of the files are for."
 modified: 2016-08-08T16:25:30-04:00
 ---
 
-Nothing clever here :wink:. Layouts, data files, and includes are all placed in their default locations. Stylesheets and scripts in `assets`, and a few development related files in the project's root directory.
+This is the first step for the Data preprocessing part. Most importan codepiece here is  
+processer:RouteSegmentor.java and also models: way.java and node.java .. In addition to that I use tests to make sure that distances between 
+segments are correct and visualization code. 
 
-```bash
-minimal-mistakes
-├── _data                      # data files for customizing the theme
-|  ├── navigation.yml          # main navigation links
-|  └── ui-text.yml             # text used throughout the theme's UI
-├── _includes
-|  ├── analytics-providers     # snippets for analytics (Google and custom)
-|  ├── comments-providers      # snippets for comments (Disqus, Facebook, Google+, and custom)
-|  ├── footer                  # custom snippets to add to site footer
-|  ├── head                    # custom snippets to add to site head
-|  ├── base_path               # site.url + site.baseurl shortcut
-|  ├── feature_row             # feature row helper
-|  ├── gallery                 # image gallery helper
-|  ├── group-by-array          # group by array helper for archives
-|  ├── nav_list                # navigation list helper
-|  ├── toc                     # table of contents helper
-|  └── ...
-├── _layouts
-|  ├── archive-taxonomy.html   # tag/category archive for Jekyll Archives plugin
-|  ├── archive.html            # archive listing documents in an array
-|  ├── compress.html           # compresses HTML in pure Liquid
-|  ├── default.html            # base for all other layouts
-|  ├── single.html             # single document (post/page/etc)
-|  └── splash.html             # splash page
-├── _sass                      # SCSS partials
-├── assets
-|  ├── css
-|  |  └── main.scss            # main stylesheet, loads SCSS partials from _sass
-|  ├── fonts
-|  |  └── fontawesome-webfont  # Font Awesome webfonts
-|  ├── js
-|  |  ├── plugins              # jQuery plugins
-|  |  ├── vendor               # vendor scripts
-|  |  ├── _main.js             # plugin settings and other scripts to load after jQuery
-|  |  └── main.min.js          # optimized and concatenated script file loaded before </body>
-├── images                     # image assets for posts/pages/collections/etc.
-├── _config.yml                # site configuration
-├── Gemfile                    # gem file dependencies
-├── Gemfile.lock               # gem file dependencies
-├── index.html                 # paginated home page showing recent posts
-└── package.json               # NPM build scripts
-```
+
++ The input for this step is this [file]({{site.baseurl}}/assets/files/Hong_Kong_Highways-Merged-Remove_Deleted.osm) 
++ Output for this step is this [file]({{site.baseurl}}/assets/files/Hong_Kong-result.osm)
+
+
+
+This step basically takes ways and nodes and modifies them so that in each way the distance between sequential nodes is inside the predefined interval. 
+PS the ways both in the input and ouput have only one direction. 
+
+
+
+Input file in OSM 
+
+![]({{site.baseurl}}/assets/images/hk-roads.png)
+
+
+Result file in OSM 
+
+![]({{site.baseurl}}/assets/images/seg-result.png)
+
+
+
+

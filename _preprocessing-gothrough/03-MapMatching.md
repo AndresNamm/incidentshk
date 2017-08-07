@@ -5,76 +5,51 @@ excerpt: "Instructions for installing the theme for new and existing Jekyll base
 modified: 2016-08-01T09:36:36-04:00
 ---
 
-{% include base_path %}
+Importan files 
 
-## Install the Theme
+Each record matched to only 1 segment.
 
-There are several ways to install the theme:
+Model: 
 
-**1.** For a **new site**, fork the Minimal Mistakes repo on GitHub. If you plan on hosting your site with GitHub Pages follow the steps outlined in the [*Quick-Start Guide*]({{ base_path }}/docs/quick-start-guide/).
++ Grid.java
++ GridElement.java
++ Segment.java 
++ Accident.java
++ Routes.java
++ Record.java 
 
-**2.** For an **existing site** you have some more work ahead of you. What I suggest is to fork and rename the theme's repo as before, then clone it locally by running `git clone https://github.com/USERNAME/REPONAME.git` --- replacing **USERNAME** and **REPONAME** with your own.
+Processing:
 
-<figure>
-  <img src="{{ base_path }}/images/mm-github-copy-repo-url.jpg" alt="copy GitHub repo URL">
-  <figcaption>Tap the copy to clipboard button (outlined in red above) to grab your GitHub repo's path.</figcaption>
-</figure>
++ [MapMatcher.java]({{site.baseurl}}/preprocessing/mapmatcher/)
 
-**3.** And for those who don't want to mess with Git, you can download the theme as a ZIP file to work with locally.
 
-[<i class="fa fa-download"></i> Download Minimal Mistakes Theme](https://github.com/mmistakes/minimal-mistakes/archive/master.zip){: .btn .btn--success}
+Todo - write this to the end. 
 
-**ProTip:** Be sure to [delete](https://github.com/blog/1377-create-and-delete-branches) the `gh-pages` branch if you forked Minimal Mistakes. This branch contains the documentation and demo site for the theme and you probably don't want that showing up in your repo.
-{: .notice--info}
 
----
+Accidents visualisation together with roads used in this project. It is seen that a lot of the accident have happened far from the currently analyzed area. Next step is to calulate the amount of distance actually under analysis. 
 
-To move over any existing content you'll want to copy the contents of your `_posts` folder to the new site. Along with any pages, collections, data files, images, or other assets you may have.
+![]({{site.baseurl}}/assets/images/accidents.png)
 
-Next you'll need to convert posts and pages to use the proper layouts and settings. In most cases you simply need to update `_config.yml` to your liking and set the correct `layout` in their YAML Front Matter.
+Part of grid in Hong Kong . Each square area stands for GridElement
 
-[**Front Matter defaults**](https://jekyllrb.com/docs/configuration/#front-matter-defaults) are your friend and I encourage you to leverage them instead of setting a layout and other global options in each post/page's YAML Front Matter.
+![]({{site.baseurl}}/assets/images/grid.png)
 
-Posts can be configured to use the `single` layout --- with reading time, comments, social sharing links, and related posts enabled. Adding the following to `_config.yml` will set these defaults for all posts:
 
-```yaml
-defaults:
-  # _posts
-  - scope:
-      path: ""
-      type: posts
-    values:
-      layout: single
-      read_time: true
-      comments: true
-      share: true
-      related: true
-```
+GrideElement and the segment inside this gridelement . 1 Segment belongs to 9 gridElemenst actually-
 
-**Post/Page Settings**: Be sure to read through the "Working with..." documentation to learn about all the options available to you. The theme has been designed to be flexible --- with numerous settings for each.
-{: .notice--info}
+![]({{site.baseurl}}/assets/images/geseg.png)
 
-## Install Dependencies
+![]({{site.baseurl}}/assets/images/geseg2.png)
 
-If this is your first time using Jekyll be sure to read through the [official documentation](https://jekyllrb.com/docs/home/) before jumping in. This guide assumes you have Ruby v2 installed and a basic understanding of how Jekyll works.
+Basis for the above maps
 
-To keep your sanity and better manage dependencies I strongly urge you to [install Bundler](http://bundler.io/) with `gem install bundler` and use the included [`Gemfile`](https://github.com/{{ site.repository }}/blob/master/Gemfile). The theme's Gemfile includes the `github-pages` gem to maintain a local Jekyll environment in sync with GitHub Pages.
+![]({{site.baseurl}}/assets/images/basis.png)
 
-If you're not planning to host with GitHub Pages and want to leverage features found in the latest version of Jekyll, uncomment the `gem "jekyll"` line in your `Gemfile`. In either case run the following:
 
-```bash
-$ bundle install
-```
+Histogram for how many segments (y) there ara which have (x) amount of records assigned to them. Altogether there are around 14000 segments in our experiment.
 
-**Note:** The [GitHub Pages gem](https://github.com/github/pages-gem) installs additional dependencies that may need to be added to your `Gemfile` if you decide to remove the `gem "github-pages"`.
-{: .notice--warning}
+![]({{site.baseurl}}/assets/images/recordhist.png)
 
-<figure>
-  <img src="{{ base_path }}/images/mm-bundle-install.gif" alt="bundle install in Terminal window">
-</figure>
 
-Depending on what gems you already have installed you may have to run `bundle update` to clear up any dependency issues. Bundler is usually pretty good at letting you know what gems need updating or have issues installing, to further investigate.
 
-When using Bundler to manage gems you'll want to run Jekyll using `bundle exec jekyll serve` and `bundle exec jekyll build`.
 
-Doing so executes the gem versions specified in `Gemfile.lock`. Sure you can test your luck with a naked `jekyll serve`, but I wouldn't suggest it. A lot of Jekyll errors originate from outdated or conflicting gems fighting with each other. So do yourself a favor and just use Bundler.
