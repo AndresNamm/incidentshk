@@ -1,7 +1,7 @@
 ---
 title: "bgt/LinearInterpolation/LinearInterpolation.java"
 modified: 2017-08-01T15:54:02-04:00
-permalink: /preprocessing/linear interpolation/
+permalink: {{baseurl}}preprocessing/linear interpolation/
 category: Java-8
 ---
 
@@ -14,7 +14,7 @@ The end result of the execution of this file is a large file with key value pair
 
 Result Example: 
 
-![inpolat](/assets/images/inpolat.png)
+![inpolat]({{baseurl}}assets/images/inpolat.png)
 
 ## public void parseAndInterpolate(String filename, int fold) throws IOException, InterruptedException {
 

@@ -1,7 +1,7 @@
 ---
 layout: single
 title: Lda tutorial
-permalink: /lda/
+permalink: {{baseurl}}/lda/
 ---
 {% for cookie in site.lda %}
   <div class="cookie">

@@ -1,7 +1,7 @@
 ---
 title: "bgt/MapMatching/MapMatcher.java"
 modified: 2017-08-01T15:54:02-04:00
-permalink: /preprocessing/code/mapmatcher/
+permalink: {{baseurl}}preprocessing/code/mapmatcher/
 category: Java-8
 ---
 
@@ -23,7 +23,7 @@ Record inf 2
 .......  
 
 Example:  
-![](/assets/images/mathresult.png)
+![]({{baseurl}}assets/images/mathresult.png)
 
 Calls pretty much these methods in the order below. 
 

@@ -1,7 +1,7 @@
 ---
 layout: single
 title: Lda tutorial
-permalink: /result/
+permalink: {{baseurl}}/result/
 ---
 
 Here I describe the machine learning methodologies used to analyse the incident detection
