@@ -5,6 +5,8 @@ excerpt: "How to quickly install and setup Minimal Mistakes for use with GitHub 
 modified: 2016-04-13T15:54:02-04:00
 ---
 
+{% include toc %}
+
 ## Introduction 
 
 
@@ -88,6 +90,7 @@ http://www.qgistutorials.com/en/docs/importing_spreadsheets_csv.html
 
 ### GROUPING AND COLOURING NODES
 
+PS - to show node in QGIS you have to add a tag to it. Otherwise this node is only considered a way node and wont be visualized. 
 
 https://gis.stackexchange.com/questions/20404/how-to-give-multiple-colors-to-features-within-a-single-shapefile
 

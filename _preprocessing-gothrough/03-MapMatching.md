@@ -5,9 +5,16 @@ excerpt: "Instructions for installing the theme for new and existing Jekyll base
 modified: 2016-08-01T09:36:36-04:00
 ---
 
+This code ran aroun  4 Hours on my computer.
+
 Importan files 
 
 Each record matched to only 1 segment.
+
+To convert accident coordinates you have to use this site:  https://www.geodetic.gov.hk/smo/en/tform/tform.aspx   HK_1980 GRID TO WGS94 - However you have to add 800000 in front of the 
+Accident file coordinates. Otherwise this conversion wont work. 
+
+
 
 Model: 
 

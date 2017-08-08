@@ -5,6 +5,8 @@ excerpt: "How the theme is organized and what all of the files are for."
 modified: 2016-08-08T16:25:30-04:00
 ---
 
+This step runs through quickly
+
 This is the first step for the Data preprocessing part. Most importan codepiece here is  
 processer:RouteSegmentor.java and also models: way.java and node.java .. In addition to that I use tests to make sure that distances between 
 segments are correct and visualization code. 

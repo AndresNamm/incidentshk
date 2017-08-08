@@ -1,0 +1,38 @@
+1 slide 
+
+This summer I have rather focused on the implementation side of this project and 
+relatively less  have spent time on focusing the math. 
+
+When going through the project step by step I have noted that the data preprocessing part is super complex in this project pipeline 
+and the algorithm implemented in the end is just a small an specific part in the end of the project.
+
+Based on this I am thinking that It might be better to put some more time under analysing and improving the current project rather than trying to focus on new algorithms.
+I think there might be a lot of ways to improve the current situation or if not at least provide a goo baseline for adding new algorithms for this project.
+
+Good news is that mos of the work that I see which needs to be done is very universal and will be useful for other Traffic incident detection methods
+
+2. So going through the project I have noted as mentioned previously that the data preparing part in this project is much more complex than initially thouch. Already understanding 
+the basics of the maps in this project took me a lot of time. This is also due to the fact that the currently implemented code is hard to run for another person, because there is
+not much documentation. 
+
+For example It took me a lot of time to figure out that before the conversion of accident files coordinates to wgs93 coordinates
+ I had to add 800000 to the accident coordinates in 1980 system, otherwise I got wrong resutl. 
+Another example is Interpolation code which I had to rewrite due to it wasting a lot of memory 
+The overall steps in this project are quite hard to follow without proper visualisation.
+The machine learning results show that recall is low, but that does not give good directions where to foucs 
+
+So in conclusion, Its actually very hard to get a good overall view of this system and also to be ensured that everything is working correcltu
+
+3.  To avoid that problem Ive decided to add some features to this system like documentation, visualization, testing machine learning analysis. 
+
+This has 3 benefits: 
+
+1. Better overall view of the system - BETTER CHECKING .
+2. Easier for new people to get into this project wihtout focusing too much on smalle details. 
+3. More objective analysis where to focus. Also with some specific analysis method we have better ground for implenitng and comparin new algorihtms.. 
+
+
+
+
+
+

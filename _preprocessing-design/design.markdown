@@ -40,7 +40,7 @@ I loosely follow the UML standard 2.0 when designing models (and later on Sequen
 for helping to describe the overall System so its a secondary, but still helpful, tool.  I use [IBM rational](https://www-01.ibm.com/software/uk/rational/)
 for modeling which is provided to me by Hong Kong University. 
 
-![](/assets/images/models.png)
+![]({{site.baseurl}}/assets/images/models.png)
 
 
 To follow separation of concerns principle as much as possible Ive decided to use the Spring framework.
