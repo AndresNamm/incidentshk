@@ -2,6 +2,8 @@
 title: "First report for this page. Report for july and beginning of August"
 ---
 
+To get in touch how the structure of this webpage works, start with the [About]({{site.baseurl}}/about/) section.
+
 Summary work:
 
 1. Run through the RA code 
