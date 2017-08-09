@@ -19,17 +19,22 @@ For example It took me a lot of time to figure out that before the conversion of
  I had to add 800000 to the accident coordinates in 1980 system, otherwise I got wrong resutl. 
 Another example is Interpolation code which I had to rewrite due to it wasting a lot of memory 
 The overall steps in this project are quite hard to follow without proper visualisation.
-The machine learning results show that recall is low, but that does not give good directions where to foucs 
+The machine learning results show that recall is low, but that does not give good directions where to focus. I dont want to rely on my cut feeling when choosing what to spend time ont.
+It better to have objective analysis on what might prove usegul 
 
 So in conclusion, Its actually very hard to get a good overall view of this system and also to be ensured that everything is working correcltu
 
-3.  To avoid that problem Ive decided to add some features to this system like documentation, visualization, testing machine learning analysis. 
+3.  To avoid that problem Ive decided to add some features to this system like documentation, visualization, testing, machine learning analysis. 
 
 This has 3 benefits: 
 
-1. Better overall view of the system - BETTER CHECKING .
+1. Better overall view of the system - mor assurance that steps are working correctly. Also some summary  .
 2. Easier for new people to get into this project wihtout focusing too much on smalle details. 
 3. More objective analysis where to focus. Also with some specific analysis method we have better ground for implenitng and comparin new algorihtms.. 
+
+
+4. Slide 
+
 
 
 
