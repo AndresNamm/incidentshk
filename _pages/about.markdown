@@ -7,7 +7,7 @@ permalink: /about/
 
 The goal of this project is to develop an automatic real time incident detection System for Hong Kong. I.e. an application which tells you whether any given moment in any given road there is an accident. This project is very similiar to what Google does, however in addition to GPS data I have included Road Sensor data into our analysis. [A quick intro to this project via a poster]({{site.baseurl}}/assets/files/poster.pdf)
 
-Accurate incident detection is important mostly for 2 reasons: Routing and Acknowledging. For routing algorithms, incident detection knowledge gives ground to a better estimate of travel times for different routes. Automatic incident detection can as well be useful for informing important agents like the police or traffic authority about the incident so they could take necessary action faster. [A quick intro to this project via a poster]({{site.baseurl}}/assets/files/poster.pdf)
+Accurate incident detection is important mostly for 2 reasons: Routing and Acknowledging. For routing algorithms, incident detection knowledge gives ground to a better estimate of travel times for different routes. Automatic incident detection can as well be useful for informing important agents like the police or traffic authority about the incident so they could take necessary action faster. 
 
 This webpage divides into 3 parts:
 
