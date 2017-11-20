@@ -9,21 +9,21 @@ category: Java-8
 
 # LinearInterpolation.java
 
-First this file generates trajectories from train_match_result.txt data. After that it generates new records for some trajectories which have skipped segments. 
-The end result of the execution of this file is a large file with key value pairs, where keys are segments and labels are speed observations collected from records. 
+First this file generates trajectories from train_match_result.txt data. After that it generates new records for some trajectories which have skipped segments.
+The end result of the execution of this file is a large file with key value pairs, where keys are segments and labels are speed observations collected from records.
 
-Result Example: 
+Result Example:
 
 ![inpolat]({{site.baseurl}}/assets/images/inpolat.png)
 
 ## public void parseAndInterpolate(String filename, int fold) throws IOException, InterruptedException {
 
-I had to add this function to the initial software, otherwise my Java Heap got full. 
+I had to add this function to the initial software, otherwise my Java Heap got full.
 
-This codepiece 
+This codepiece
 1. gets a hashmap of all gps-device id-s from the input file (train_match_result.txt).
-2. Then it separates this hashmap into 5 100 element pieces. 
-3. Then it goes through the input file for every 100 gps-device bucket and generates Trajectories for those files. 
+2. Then it separates this hashmap into 5 100 element pieces.
+3. Then it goes through the input file for every 100 gps-device bucket and generates Trajectories for those files.
 
 
 ~~~java
@@ -43,7 +43,7 @@ This codepiece
                 devMap.put(dev_id,dev_id);
             }
         }
-        
+
 
 
         BufferedReader reader = new BufferedReader(new FileReader(filename));
@@ -87,22 +87,22 @@ This codepiece
 
 ## parseRecords(String filename)
 
-Goes through mapmatching result files where each line is one record. Creates trajsMap from Records: 
-Assumes every way is directional and has only 1 direction. 
+Goes through mapmatching result files where each line is one record. Creates trajsMap from Records:
+Assumes every way is directional and has only 1 direction.
 
-+ Returns : HashMap of Trajectories consisting of records 
++ Returns : HashMap of Trajectories consisting of records
 
 
 ~~~java
 public HashMap<Integer, List<List<Record>>> trajsMap; // store (dev_id, trajectories)  
 ~~~
 
-To separate trajectories from each other uses this condition + other minor checks. That means, 1 trajectory is inside 1 way. 
+To separate trajectories from each other uses this condition + other minor checks. That means, 1 trajectory is inside 1 way.
 ~~~java
-        if (thisSeg.way_id == lastSeg.way_id &&  // NEXT RECORD IS LOCATED AT THE SAME SEGMENT 
+        if (thisSeg.way_id == lastSeg.way_id &&  // NEXT RECORD IS LOCATED AT THE SAME SEGMENT
                 thisSeg.inner_id >= lastSeg.inner_id && // CANT UNDERSTAND WHY THIS IS A NECESSARY CONDITION. CAN IT BE THAT WE ARE ASSUMING 2 WAY ROADS , WHICH
                 //WOULD MEAN THAT SEGMENTS ARE ADDED FROM WAYS IN THE RIGHT DIRECTION. YES. THATS LIKELY IT // THIS PART CAN BE USEFUL
-                // BUT CAN ALSO BE VERY DANGEROUS 
+                // BUT CAN ALSO BE VERY DANGEROUS
                 rec.month == lastRec.month &&
                 rec.day == lastRec.day)
 ~~~
@@ -110,7 +110,7 @@ To separate trajectories from each other uses this condition + other minor check
 Generation Segment.inner id
 
 _In generation we are assuming that each road is 2 ways. Thus the ways are read in directional manner._
-[Direction info](https://gis.stackexchange.com/questions/98435/does-osm-data-contain-the-direction-of-travel) All the WAYS are one way according to 
+[Direction info](https://gis.stackexchange.com/questions/98435/does-osm-data-contain-the-direction-of-travel) All the WAYS are one way according to
 ~~~java
 
         Iterator<Element> wayItr = rootElem.elements("way").iterator();
@@ -129,27 +129,27 @@ _In generation we are assuming that each road is 2 ways. Thus the ways are read 
 
 ~~~
 
-## interpolate() 
+## interpolate()
 
-### Summary 
+### Summary
 
-Goes through the data. Modifies the data, so that all segments have EXACLTY 1 record **from each previously generated trajectory**. 
+Goes through the data. Modifies the data, so that all segments have EXACLTY 1 record **from each previously generated trajectory**.
 
 ### Parts of code
 
 
 
-GOES THROUGH ALL DEVICES 
+GOES THROUGH ALL DEVICES
 
 ~~~java
 Iterator trajsItr = trajsMap.entrySet().iterator();
-while (trajsItr.hasNext()){ // ITERATER OVER ALL DEVICES 
+while (trajsItr.hasNext()){ // ITERATER OVER ALL DEVICES
     Map.Entry dev_trajs_pair = (Map.Entry)trajsItr.next();
-    int dev_id = (int)dev_trajs_pair.getKey(); // 
+    int dev_id = (int)dev_trajs_pair.getKey(); //
     List<List<Record>> trajs = (List<List<Record>>) dev_trajs_pair.getValue(); // GET NEXT LIST OF TRAJECTORIES FOR A PARTICULAR DEVICE
 ~~~
 
-GOES THROUGH ALL GENERATED TRAJECTORIES 
+GOES THROUGH ALL GENERATED TRAJECTORIES
 
 ~~~java
 Iterator<List<Record>> trajItr = trajs.iterator();
@@ -162,15 +162,15 @@ If trajectory takes place only in one segment, then we merge multiple records in
 ~~~java
 if (lastInner_id == firstInner_id){
     double distance = Node.calcDist(firstRec.getLocation(), lastRec.getLocation());
-    double speed = distance/1000.0/(lastRec.time-firstRec.time); // GET SPEED 
+    double speed = distance/1000.0/(lastRec.time-firstRec.time); // GET SPEED
     double time = (firstRec.time + lastRec.time) / 2;
     Record newRec = new Record(dev_id, firstRec.month, firstRec.day, time, speed, firstRec.seg_id);
     newTraj.add(newRec);
 ~~~
 
-If we have more segments than 1 in a trajectory. We go through each record in the trajectory and get their segments id. 
-If the difference of segment id-s between sequential records is larger than 1, the gps has skipped it and we have to interpolate a 
-record there. 
+If we have more segments than 1 in a trajectory. We go through each record in the trajectory and get their segments id.
+If the difference of segment id-s between sequential records is larger than 1, the gps has skipped it and we have to interpolate a
+record there.
 
 ~~~java
     while (j < traj.size()){
@@ -210,8 +210,8 @@ record there.
 
 ## public void outputResult(String result_filename, HashMap<Integer, List<List<Record>>> trajsMap ) throws IOException{
 
-Goes through all 
-devices -> all trajectories -> all records : prints out rec.seg_id info:(way_id, inner_id) with speed and time info to file 
+Goes through all
+devices -> all trajectories -> all records : prints out rec.seg_id info:(way_id, inner_id) with speed and time info to file
 
 ~~~java
 Iterator trajsItr = trajsMap.entrySet().iterator();

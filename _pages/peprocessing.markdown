@@ -6,16 +6,21 @@ permalink: /preprocessing/
 
 ## Introduction
 
-On this page I will hold tutorials, documentation about general data preprocessing steps for Hong Kong data (Currently PCB data(Private) and [Speed-Panel data](https://data.gov.hk/en-data/dataset/hk-td-tis-speed-map-panels))
-There are three categories of documents on this page: Code description files for most important code-pieces; Software design guideline descriptions for current project; Step by step tutorial for going through 
-the data preprocessing steps for Hong Kong traffic data. 
+
+On this page I will hold tutorials, documentation about general data preprocessing steps for Hong Kong data (Currently PCD data(Private) and [Speed-Panel data](https://data.gov.hk/en-data/dataset/hk-td-tis-speed-map-panels))
+There are three categories of documents on this page: Code description files for the Data models used in this project, Software design guideline descriptions for current project and a Step by step tutorial for going through the data preprocessing steps for Hong Kong traffic data.
+
+The code for the preprocessing steps is available at:
+
++ https://github.com/AndresNamm/Incident-Detection-Java
++ https://github.com/AndresNamm/Incident-Detection-Visualization
 
 ## Topics
 
 
-### Code Descriptions 
+### Code Descriptions
 
-On this code Documentation page I keep more thorough descriptions of some important/complex 
+On this code Documentation page I keep more thorough descriptions ofsome important/complex
 code files available at [Github](https://github.com/AndresNamm/) This is only a **Supplementary** help in addition to reading the code.
 {% assign groups = site.preprocessing-code | group_by: "category" | sort: "name" %}
 + {% for group in groups %}
@@ -30,19 +35,16 @@ code files available at [Github](https://github.com/AndresNamm/) This is only a 
 {%endfor%}
 
 
-### Design 
+### Design
 
 [Short Summary]({{site.baseurl}}{{page.url}}design) of Design Guidelines for this project with info about responsibility division, UML, testing and deployment
 
-### Gothrough tutorial
+### Gothrough tutorial of the Preprocessing Steps
 
 
-
-
-+ Here you can find info about: 
++ Here you can find info about:
 {% for cookie in site.preprocessing-gothrough %}
   <div class="cookie">
     <h3><a href="{{site.baseurl}}{{ cookie.url }}">{{ cookie.title }}</a></h3>
   </div>
 {% endfor %}
-

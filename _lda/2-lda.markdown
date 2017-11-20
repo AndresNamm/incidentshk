@@ -1,8 +1,7 @@
 ---
-title: "LDA theory"
+title: "LDA background - (messy - made for my own recap)"
 category: LDA
-sidebar:
-  nav: "lda"
+
 ---
 
 
@@ -15,7 +14,7 @@ sidebar:
 + [Helsinki University](https://www.google.ee/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwjAw7b957XVAhULVRQKHfbWCvYQFggkMAA&url=https%3A%2F%2Fwww.cs.helsinki.fi%2Fu%2Fbmmalone%2Fprobabilistic-models-spring-2014%2FPoissonMixtureModels.pdf&usg=AFQjCNGVnqWMEO3v2v3b0UAm7gy-MFYyzA)
 
 
-### Blei Article Summary 
+### Blei Article Summary
 
 For every document in the collection, we generate
 the words in a two-stage process.
@@ -30,11 +29,11 @@ corresponding distribution over
 the vocabulary.
 
 
-For this we need 
+For this we need
 
-1. A space over distributions over topics. 
+1. A space over distributions over topics.
 2. A distribution over topics drawn from 1. (Also called the per-document distribution)
-2. For each topic a distribution over vocabulary. 
+2. For each topic a distribution over vocabulary.
 
 
 The
@@ -67,16 +66,16 @@ The posterior distribution.7
 + Latent Random variable $$z_{d}$$  where z_{d,n} is the topic assignement for n-th word in document d
 + Observed Random variable $$w_{d}$$ where $$w_{d,n}$$ is the word assignement for n-th word in document d.
 
-Alltogether with these random variables we can form the generative process defined join distribution. 
+Alltogether with these random variables we can form the generative process defined join distribution.
 
-$$\prod_{1:K} p(\beta_{k}) \prod_{1:D} p(\theta_{d}) \left(\prod_{1:N} p(z_{d,n} \vert \theta_{d})p(w_{d,n} \vert \beta_{1:K},d_{d,n})\right)$$ 
+$$\prod_{1:K} p(\beta_{k}) \prod_{1:D} p(\theta_{d}) \left(\prod_{1:N} p(z_{d,n} \vert \theta_{d})p(w_{d,n} \vert \beta_{1:K},d_{d,n})\right)$$
 
 Posterior computation for LDA.
 We now turn to the computational problem, computing the conditional
 distribution of the topic structure
 given the observed documents. (As we
 mentioned, this is called the posterior.)
-Using our notation, the posterior 
+Using our notation, the posterior
 
 
 $$p(\beta_{1:K}, \theta_{1:D}, z_{1:D} \vert  w_{1:D})$$=$$\frac{p(\beta_{1:K}, \theta_{1:D}, z_{1:D}, w_{1:D})}{p(w_{1:D})}$$
@@ -98,10 +97,10 @@ large; this sum is intractable to compute.
 
 
 NUMERATO - MURRU LUGEJA $$\frac{a}{b}$$ lugeja on a, b on nimetaja.
-Mixture Topic Model 
+Mixture Topic Model
 
 + Formula
-+ PROBABALISTIC Model 
++ PROBABALISTIC Model
 + Observation Generation Description
 
 Topic modeling algorithms form
@@ -142,8 +141,8 @@ open the door for innovations in
 optimization to have practical impact
 in probabilistic modeling.
 
-### What distributions are used. 
-#### DOCUMENT 
+### What distributions are used.
+#### DOCUMENT
 It seems like the $$theta$$ and $$beta$$ are with dirichlet distirbution
 
 #### TRAFFIC
@@ -153,7 +152,7 @@ It seems like the $$theta$$ and $$beta$$ are with dirichlet distirbution
 
 + $$X_{s}$$ - observations aggregated for segment s
 + $$x_{sn}$$ - n-th observation of $$X_{s}$$ : segment s - In this paper we assume it is scalar (speed)
-+ This model associates every traffic state with a probability distribution. 
++ This model associates every traffic state with a probability distribution.
     + We have K traffic states.
         + k-th traffic state corresponds to paremete $$\theta_{k}$$    
 
@@ -161,7 +160,7 @@ It seems like the $$theta$$ and $$beta$$ are with dirichlet distirbution
 
     + $$0<=\pi <=1$$ && $$\sum_{k=1}^{K} \pi_{sk} = 1$$
     + $$\theta_{K}=(\theta_{1}...\theta_{K})$$ State parameters are  all same for all segments
-    + $$\pi_{s}=(\pi_{s1}...\pi_{sK})\intercal$$ Segment parameters (multipliers for each traffic state) are different for all segments. 
+    + $$\pi_{s}=(\pi_{s1}...\pi_{sK})\intercal$$ Segment parameters (multipliers for each traffic state) are different for all segments.
 
 
 
@@ -172,20 +171,20 @@ tribution $$Multi(\pi_{s})$$_
 **This can be taken 2 ways**
 
     + Choose a traffic state distribution for segment s. Choose a hidden state probability distribution k ~ multinomial distribution $$Multi(\pi_{s})$$. Kinda like choosing a topic distribution fir a document.  
-    + Choose a traffic state from a multinomial distribution $$Multi(\theta_{s})$$ Traffic state corresponds to topic. Topic assignement.  It seems like the distribution among topics for each segment IS BINOMIAL. 
+    + Choose a traffic state from a multinomial distribution $$Multi(\theta_{s})$$ Traffic state corresponds to topic. Topic assignement.  It seems like the distribution among topics for each segment IS BINOMIAL.
 
-+ **WORD BY WORD** _Generate the value $$x_{sn}~p(x_{sn} \vert \theta_{k})$$_ 
++ **WORD BY WORD** _Generate the value $$x_{sn}~p(x_{sn} \vert \theta_{k})$$_
 **This can be taken only 1 way**
     + Draw an observation from state. This relates more to the 2 translation of the previous step: Choose a traffic state from a multinomial distribution $$k~Multi(\pi_{s})$$
 
 ##### SIMILIARITIES WITH DOCUMENT CLASSIFICATION
 
-+ Traffic state - Topic 
++ Traffic state - Topic
 + Segment - Document
 
-##### PARAMETER ESTIMATION FOR HIDDEN STATES 
+##### PARAMETER ESTIMATION FOR HIDDEN STATES
 
-We previously described a process for generation of each observation based on the Hidden random variables. Now we want to get those Hidden variables from each observation. 
+We previously described a process for generation of each observation based on the Hidden random variables. Now we want to get those Hidden variables from each observation.
 
 Lets first get likelihood function for X - L(X) For the entire set the likelihood of observed data is given by the following equation:
 
@@ -196,20 +195,20 @@ It can be translated as: For each road segment for each observation the combined
 
 
 
-1. It seems like the distribution over topics for each segment IS BINOMIAL. 
+1. It seems like the distribution over topics for each segment IS BINOMIAL.
 2. It seems like distribution over observations for each traffic state is Poisson
 
 
 
 ### WHAT PARAMETERS ARE LEARNED
 
-IN traffic states $$\theta$$ - state distribution over observations   and $$\pi$$ segment distribution over states. 
+IN traffic states $$\theta$$ - state distribution over observations   and $$\pi$$ segment distribution over states.
 
 ### HOW THESE PARAMETES CAN BE LEARNED
 
 #### EM ALGORITHM LEARNING PROCESS
 
-+ [Why is the em algorithm used](https://stats.stackexchange.com/questions/62940/why-is-the-expectation-maximization-algorithm-used) Väidetakse, et ta on optimaalsem kui likelihood maximization. Põhimõtteliselt asendab tavalisi likelihood approximatore. 
++ [Why is the em algorithm used](https://stats.stackexchange.com/questions/62940/why-is-the-expectation-maximization-algorithm-used) Väidetakse, et ta on optimaalsem kui likelihood maximization. Põhimõtteliselt asendab tavalisi likelihood approximatore.
 + Likelihood of data -  from this folder likelihood of data
 
 + The log likelihood function
@@ -218,25 +217,25 @@ The joing density of n independent observation
 
 $$f(y;\theta)=\prod_{i=1}^{n}f_{i}(y_{i};\theta)=L(\theta;y)$$
 
-This expression viewed as a function of the unknown parameter $$\theta$$ given data y is called the likelihood. Often we work with the natural logarithm of the likelihood function, the so called- log likelihood function. 
+This expression viewed as a function of the unknown parameter $$\theta$$ given data y is called the likelihood. Often we work with the natural logarithm of the likelihood function, the so called- log likelihood function.
 
 $$log L(\theta;y)=\sum_{i=1}^{n}log f_{i}(y_{i};\theta)$$
 
 
 + [EM ALGORITHM GREAT TUTORIAL](https://www.youtube.com/watch?v=REypj2sy_5U)
-    + SOFT CLUSTERING - CLUSTERS MAY OVERLAP 
+    + SOFT CLUSTERING - CLUSTERS MAY OVERLAP
     + EM ALGORITHM - MAXIMUM LIKELIHOOD ESTIAMTION PROBABALISTIC.
-    + MIXTURE MODELS - PROBABILISTICALLY SOUND WAY TO DO SOFT CLUSTERING 
-+ Q function - MIS ON SELLE SEOS EM ALGORITMING 
-+ Bayesian inference in EM algorithm.Maximum likelihood and bayesian inference. Kui mõelda võimalikult lihtsalt siis maximum likelihood mõjutab bayesina inferenctsi. 
+    + MIXTURE MODELS - PROBABILISTICALLY SOUND WAY TO DO SOFT CLUSTERING
++ Q function - MIS ON SELLE SEOS EM ALGORITMING
++ Bayesian inference in EM algorithm.Maximum likelihood and bayesian inference. Kui mõelda võimalikult lihtsalt siis maximum likelihood mõjutab bayesina inferenctsi.
 
 #### [LATENT VARIABLE LEARNING OVERALL](https://en.wikipedia.org/wiki/Latent_variable)
 
 
 [ESTIMATION VS INFERENCE](https://stats.stackexchange.com/questions/130867/inference-vs-estimation)
-1 Answer 
+1 Answer
 
-> Estimation is but one aspect of inference where one substitutes unknown parameters (associated with the hypothetical model that generated the data) with optimal solutions based on the data (and possibly prior information about those parameters). 
+> Estimation is but one aspect of inference where one substitutes unknown parameters (associated with the hypothetical model that generated the data) with optimal solutions based on the data (and possibly prior information about those parameters).
 
 2 Answer
 
@@ -263,4 +262,3 @@ Bayesian statistics is often used for inferring latent variables.
 + Latent Dirichlet Allocation
 + The Chinese Restaurant Process is often used to provide a prior distribution over assignments of objects to latent categories.
 + The Indian buffet process is often used to provide a prior distribution over assignments of latent binary features to objects.
-

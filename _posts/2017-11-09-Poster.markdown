@@ -2,5 +2,4 @@
 title: "Poster describing the thesis project"
 ---
 
-
 + [Poster (pdf)]({{site.baseurl}}/assets/files/poster.pdf)

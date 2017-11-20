@@ -20,7 +20,7 @@ A coordinate system can be
 + spherical - coordinates in longitude, latitude. Example wgs84. Coordinates on the sphere.
 
 
-To conver files in HK 1980 coordinate to wgs1984 you can use this site.
+To convert files in HK 1980 coordinate to wgs1984 you can use this site.
 https://www.geodetic.gov.hk/smo/en/tform/tform.aspx
 
 __References__
@@ -51,9 +51,6 @@ __References__
 
 1.  http://en.flossmanuals.net/openstreetmap/the-osm-data-model/
 2.  http://wiki.openstreetmap.org/wiki/Node
-
-
-
 
 
 ## QGIS
@@ -88,7 +85,7 @@ If gives error, it might not import all data.
 http://www.qgistutorials.com/en/docs/importing_spreadsheets_csv.html
 
 
-### GROUPING AND COLOURING NODES
+### Grouping and Colouring of Nodes
 
 PS - to show node in QGIS you have to add a tag to it. Otherwise this node is only considered a way node and wont be visualized.
 
@@ -96,3 +93,19 @@ https://gis.stackexchange.com/questions/20404/how-to-give-multiple-colors-to-fea
 
 tags for grouping nodes <tag k="ref" v="4"/>
 http://wiki.openstreetmap.org/wiki/Key:ref
+
+
++ If you want to visualized real values like OMS with qgis, you have to generate double value features inside qgis.
+
+
+## Roads Under Analysis for this Project
+
+As mentioned before, nodes and ways can both contain specific tags with information. For this project only certain ways and nodes were needed. More specifically, nodes and ways which stood as roads were chosen. These roads were also filtered so only roads with the OSM tag trunk and motorway were kept. Such a choice was made because these tags specify most important roads in a country's system and are likely to produce the most data with the highest quality. For a developmental project this is a very important aspect because it allows to focus on other aspects like model development instead of trying to satisfy all conditions. This also allowed to include roads which are under the supervision of speedpanels. The roads that were finally chosen to be analysed can be seen on the figure below.  The ways (roads) have only one direction. To perform the filtering of the roads a Java-based geospatial tool JOSM was used.
+
+![]({{site.baseurl}}/assets/images/diss/basemap.png)
+
+## OSM parser
+
+[Code in Github](https://github.com/AndresNamm/Incident-Detection-Java/blob/master/src/main/java/bgt/parsing/OSMparser.java)
+
+To make the visualisation of the geospatial data easier, a static class called \path{bgt.parsing.OSMparser} was created. This parser is capable of transforming most of the intermediate data that is generated in the preprocessing phase into visualisable OSM format. For example GPS records from taxis and accidents, trajectories, speedpanel location data and detection rate can be and are visualised with this class in the later phases of this project. This parser serves as a project on its own and could be used separately to visualise geospatial data.

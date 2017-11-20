@@ -29,5 +29,7 @@ preprocessing-gothrough:
     url: /preprocessing/mapmatching/
   - title: Speedpanel matching
     url: /preprocessing/mapmatchingsp/
-  - title: "Interpolation and Labeling"
+  - title: "Interpolation"
     url: /preprocessing/interlabel/
+  - title: "Labeling"
+    url: /preprocessing/labeling/

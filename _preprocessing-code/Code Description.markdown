@@ -1,199 +1,202 @@
 ---
-title: "General Code Description"
+title: "Data Models "
 modified: 2017-08-01T15:54:02-04:00
 permalink: /preprocessing/codereference/
 category: Java-8
 ---
 
-# Code Description
-## Incident Detection (Java)
-- RouteSegmentation
-	- Models
-		- [Node.java](./Incident Detection (Java)/src/bgt/RouteSegmentation/Models/Node.java)
-			
-			```
-			[Model Class] 
-			Model of route nodes.
-			```
-		- [Way.java](./Incident Detection (Java)/src/bgt/RouteSegmentation/Models/Way.java)
-			
-			```
-			[Model Class]
-			Model of routes.
-			```
-	- [RouteSegmentor.java](./Incident Detection (Java)/src/bgt/RouteSegmentation/RouteSegmentor.java)
-		
-		```
-		[Function Class]
-		Function: Split routes into segments of specific lengths.
-		Input Files: data/route_segmentation/Hong_Kong_Highways-Merged-Remove_Deleted.osm
-		Input Desc: Hong Kong roadmap extracted from OpenStreetMap (in OSM format, downloaded from 
-					https://mapzen.com/data/metro-extracts/), with route fragments manually merged.
-		Output File: data/route_segmentation/Hong_Kong-result.osm, 
-					 data/route_segmentation/Hong_Kong-result.txt
-		Output Desc: Hong Kong roadmap with routes segmented. OSM file is used for visualization use, 
-					 TXT file is used for reading use.
-		```
+{% include toc %}
 
-- MapMatching
-	- Models
-		- [Accident.java](./Incident Detection (Java)/src/bgt/MapMatching/Models/Accident.java)
-		
-			```
-			[Model Class]
-			Model of traffic accidents.
-			``` 
-		- [Record.java](./Incident Detection (Java)/src/bgt/MapMatching/Models/Record.java)
-		
-			```
-			[Model Class]
-			Model of GPS records.
-			```
-		- [Segment.java](./Incident Detection (Java)/src/bgt/MapMatching/Models/Segment.java)
 
-			```
-			[Model Class]
-			Model of road segments.
-			```
-	- [CountRecords.java](./Incident Detection (Java)/src/bgt/MapMatching/CountRecords.java)
+## bgt/Model/Routes.java
 
-		```
-		[Function Class]
-		Function: Count the total number of GPS records.
-		Input Files: data/GPS_data/TaxiData201000.mdb - TaxiData201052.mdb (obtained from Civil Engineering 
-					 guys)
-		Input Desc: All GPS record files.
-		Output Files: None
-		Output Desc: Total number of GPS records.
-		```
-	- [MapMatcher.java](./Incident Detection (Java)/src/bgt/MapMatching/MapMatcher.java)
-		
-	  ```
-	  [Function Class]
-	  Function: Map GPS records/traffic accidents onto road segments.
-	  Input Files: roadmap file => data/route_segmentation/Hong_Kong-result.osm
-	  				 record files => data/route_segmentation/TaxiData2010XX.mdb-TaxiData2010YY.mdb (decided 
-	  				 				 by fold number) 
-	  				 accident file => data/map_matching/acc_info.xls
-	  Input Desc: Input roadmap file+record files when mapping records, input roadmap file+accident file when 
-	  				mapping accidents.
-	  Output Files: record mapping => data/map_matching/fold_x/train_match_result.txt (x is fold number)
-	  									data/map_matching/fold_x/test_match_result.txt (x is fold number)
-	  				  accident mapping => data/map_matching/acc_match_result.txt
-	  Output Desc: Will output record mapping result to different folders with different fold numbers.
-	  ```
+This class generally represents the OSM file in java context under this project.
 
-- LineaInterpolation
-	- [LinearInterpolation.java](./Incident Detection (Java)/src/bgt/LinearInterpolation/LinearInterpolation.java)
+### Variables  
 
-		```
-		[Function Class]
-		Function: Estimate the average speed value of taxis on passed road segments with zero or more than 
-				  one training GPS records.
-		Input Files: data/map_matching/fold_x/train_match_result.txt (x is fold number)
-		Input Desc: None
-		Output Files: data/map_matching/fold_x/train_interpolation_result.csv (x is fold number)
-		Output Desc: None
-		```
++ private Boundaries boundaries;
++ private List<Way> wayList= new ArrayList<>();
++ private List<Node> nodeList=new ArrayList<>();
 
-- LabelData
-	- [LabelData.java](./Incident Detection (Java)/src/bgt/LabelData/LabelData.java)
-	
-		```
-		[Function Class]
-		Function: Interpolate the average speed value and label accident data on test GPS records. 
-		Input Files: test record files => data/map_matching/fold_x/test_match_result.txt (x is fold number)
-					 accident file => data/map_matching/acc_match_result.txt
-		Input Desc: None
-		Output Files: data/label_data/fold_x/label_result_y.txt (x is fold number, y is route id)
-					  data/label_data/fold_x/label_result_list.txt
-		Output Desc: label_result_y records the labeling result for route y, while label_result_list is used 
-					to record the list of routes with at least one record labelled with accident
-		```
+### Most Important functions
 
-- IncidentDetection (src/bgt/IncidentDetection)
-	- Models
-		- [EvaluateResult.java](./Incident Detection (Java)/src/bgt/IncidentDetection/Models/EvaluateResult.java)
-		
-			```
-			[Model Class]
-			Model of the evaluation result of a set by the detection algorithm.
-			```
-		- [LabeledRecord.java](./Incident Detection (Java)/src/bgt/IncidentDetection/Models/LabeledRecord.java)
-		
-			```
-			[Model Class]
-			Model of a GPS record with label.
-			```
-		- [SegDistribution.java](./Incident Detection (Java)/src/bgt/IncidentDetection/Models/SegDistribution.java)
-		
-			```
-			[Model Class]
-			Model of the speed distribution on a segment.
-			```
-	
-	- [IncidentDetection.java](./Incident Detection (Java)/src/bgt/IncidentDetection/IncidentDetection.java)
-	
-		```
-		[Function Class]
-		Function: Detect traffic incidents in real time with trained model and labeled test data.
-		Input Files: distribution file => data/estimate_result/fold_x/estimate.out (x is fold number)
-					 labeled route list file => data/label_data/fold_x/label_result_list.txt (x is fold number)
-					 labeled test data file => data/label_data/fold_x/label_result_y.txt (x is fold number, 
-					 y is route id)
-		Input Desc: From the labeled route list file can know the list of routes containing at least 
-					one record labeled incident.
-		Output Files: data/incident_detection/fold_x/detect_result_y.txt (x is fold number, y is route id)
-		Output Desc: None
-		```
++ public void resegmentWays(double LOW_THRES, double HIGH_THRES){...}
 
-## Parameter Estimation (C++)
-- pmm (poisson mixture model)
-	- [csv2dump.cpp](./Parameter Estimation (C++)/pmm/src/csv2dump.cpp)
-		
-		```
-		Function: Convert CSV input to a dump file that 'estimate' reads.
-		Input Files: Inicident Detection (Java)/data/linear_interpolation/fold_x/train_interpolation_result.csv (x is fold number)
-		Input Desc: None
-		Output Files: fold_x/train_interpolation_dump
-		Output Desc: Corresponding dump file for the input CSV file.
-		```
-	- [estimate.cpp](./Parameter Estimation (C++)/pmm/src/estimate.cpp)
 
-	
-		```
-		Function: Maximum-likelihood estimate the parameters of the poisson mixture model (pmm).
-		Input Files: fold_x/train_interpolation_dump (x is fold number)
-		Input Desc: None
-		Output Files: Inicident Detection (Java)/data/estimate_result/fold_x/estimate.out (x is fold number)
-		Output Desc: The estimated speed distribution for each road segment.
-		```
 
-## Convert Coordinates & Plot Results (Python)
-- [ConvertCoords.py](./Convert Coordinates & Plot Results (Python)/ConvertCoords.py)
+### Most Important functions
 
-	```
-	Function: Convert GPS records from HK80 Grid system into WGS84 system using the web-based tool on the 
-			  official website of HK Survey and Mapping Office / Lands Department.
-	Input Files: data/convert_coords/only_coords.xlsx
-	Input Desc: Unconverted coordinates in HK80 Grid system.
-	Output Files: data/convert_coords/ConvertedCoords.xls
-	Output Desc: Converted coordinates in WGS84 system.
-	```
-- [PlotResult.py](./Convert Coordinates & Plot Results (Python)/PlotResult.py)
+None
 
-	```
-	Function: Plot the detection results to get the receiver-operating characteristic (ROC) curve and get  
-			 the area under curve (AUC) value.
-	Input Files: data/plot_result/TW_z/fold_x/detect_result_y.txt (x is the fold number, y is the route id, 
-				 z is the time window size)
-	Input Desc: None
-	Output Files: data/plot_result/averaged/TW_z/result.txt (z is the fold number)
-	Output Desc: The AUC values of the detection result for each route in each fold.
-	
-	```
+## bgt/Model/Node.java
 
-		
-			
-		
-			 
+### Variables  
+Represents a Node in standard OSM format in java context under this project.  
+
++ public static int numOfGenNodes = 0;  Counter for number of nodes
++ public long id;
++ public double lat;
++ public double lon;
++ public String visible= "true";
++ public String ref="untyped";
+
+### Most Important functions
+
++ public static double toRad(double coord){return coord/180.0*Math.PI;} - Convert coordinate(Latitude/Longitude) into radian
++ public static double calcDist(double aLat, double aLon, double bLat, double bLon){...} - Calculate the distance between two points
++ public static double calcDist(Node aNode, Node bNode){...} - Calculate the distance between two points
+
+
+## bgt/Model/Way.java
+
+Represents a WAy in standard OSM format in java context under this project.  
+
+
+### Variables
+
++ public long id;
++ public List<Node> nodeList;
++ public boolean isBridge;
++ public boolean isTunnel;
++ public String name;
++ public String name_en;
++ public String name_zh;
++ public boolean isOneWay; - This is true for all
++ public static final double LOW_THRES = 50.0;
++ public static final double HIGH_THRES = 100.0;
+
+### Most Important functions
+
++ public List<Node> resegmentWay(double LOW_THRES,double HIGH_THRES){...} -In 1 way, changes the  distances between its nodes so each distance bewteen nodes would be roughly equal.  
+
+## bgt/Model/Segment.java
+
+### Variables
+
++ public String seg_id; -  22371280_0_0
++ public long way_id; $\equiv$ to route id.
++ public int inner_id;// id inside a way differing on from other
++ public Node startNode;
++ public Node endNode;
++ public double direction;
++ public int startHour; - what the fuck is this . In our model, this shit is always = 0..  
++ public List<Record> recordList;
++ public List<Accident> accList;
+
+### Most Important functions
+
++ public void calcSeg_id() {this.seg_id = way_id +"_"+inner_id+"_"+ startHour; // generate segment i;}
++ public void calcDirection(){ // calculate the azimuth of the segment } Triggered at constructor when creating the segment at
++ public Segment[] splitSegByHour(){
+
+## bgt/Model/Grid.java
+
+### Variables
+
++ private Boundaries boundaries;
++ private GridElement[][] listGrid;
+
+### Most Important functions
+
+ public Routes convertToRoutes(int rowID, int colID) Helps to print out Grid as routes
+
+
+## bgt/Model/GridElement.java
+
+### Variables
+
++ Position boundaries
+    + final double LON_MIN;
+    + final double LON_MAX;
+    + final double LAT_MIN;
+    + final double LAT_MAX;
++ private List<Segment> segmentList=new ArrayList<Segment>();
+
+### Most Important functions
+
+## bgt/MapMatching/Accident.java
+
+### Variables
+
++ public int acc_no;
++ public int severity;
++ public int month;
++ public int day;
++ public double acc_time;
++ public Node acc_location;
+
+### Most Important functions
+
+## bgt/MapMatching/Record.java
+
+### Variables
+
++ public long rec_id;
++ public int dev_id;
++ public int month;
++ public int day;
++ public double time;
++ public Node location;
++ public double speed; // in km/h
++ public double direction;
++ public String seg_id; - this.seg_id = way_id +"_"+inner_id+"_"+ startHour;
++ public int acc_flag; // whether encounter an accident or not
+
+### Most Important functions
+
+## bgt/IncidentDetection/Models/EvaluateResult
+
+Used to keep anomaly values and whether there is accident
+
+### Variables  
+
++ public double anomaly_val;
++ public double anomaly_val_weighted;
++ public int acc_label;
+
+### Most Important functions
+
+## bgt/IncidentDetection/Models/LabeledRecord
+
+Store the record read in from labeling result file.
+
+### Variables  
+
++ public double time;
++ public int speed;
++ public int acc_flag; // 1 for accident, 0 for no accident
+
+### Most Important functions
+
+## bgt/IncidentDetection/Models/SegDistribution
+
+Store the parameters that have been traines
+
+### Variables  
+
++ public static int NUM_MIXTURE;  // number of traffic states
++ public static double[] lambdas; // global parameter of each poisson distribution - total K
++ public static double[][] deltas; // the pair-wise KL distance between states - some math jargon
++ public String seg_id;   // segment id this distribution parameters belong to
++ public double[] pis; // weights for each state/poisson distribution in this segment
++ public double[] sigmas; // prepared for weighted KL divergence - math jargon
+
+
+## bgt/Model/Boundaries.java
+
+### Variables
+
+Based on the XML boundary attribute on top of every XML file
+
+_Example_
+
+~~~
+ <bounds minlat="22.10531" minlon="113.78242" maxlat="22.60856"
+maxlon="114.49179" origin="osmconvert 0.8.5"/>  
+~~~
+
++ private final double minlat;
++ private final double maxlat;
++ private final double maxlon;
++ private final double minlon;
++ private String origin="osmconvert 0.8.5";

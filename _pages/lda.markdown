@@ -36,9 +36,7 @@ I think these are good starting points for understanding Topic Modeling. At leas
 + http://videolectures.net/mlss09uk_blei_tm/ - Clear and **fun** lecture from the creator of this method.
 + LDA is based on bayes statistics so its good to get some understaning of [that]({{site.baseurl}}/assets/files/bayes.pdf)
 
-### Throughout the study I wrote rather messy mathematical summaries -
-
-This is likely not a good information source for others because it's messy and consists of some ideas that I struggled with.
+## Topic modeling
 
 {% for cookie in site.lda %}
   <div class="cookie">
@@ -46,12 +44,12 @@ This is likely not a good information source for others because it's messy and c
   </div>
 {% endfor %}
 
-### Summary
-
 
 
 ## Code
 
-The code which trains the Topic Model for Hong Kong Traffic is available in [Github](https://github.com/AndresNamm/Incident-Detection-Model-Training-)
++ The code which trains the Topic Model for Hong Kong Traffic is available in [Github](https://github.com/AndresNamm/Incident-Detection-Model-Training-)
+
++ Incident detection code which uses the trained model is also available at  [Github](https://github.com/AndresNamm/Incident-Detection-Java/tree/master/src/main/java/bgt/IncidentDetection)
 
 So far,  I have created a [tutorial](https://andresnamm.github.io/blog/formating/2017/08/03/C++BOOST.html) for setting up for windows the C++ enviroment to run this code. Suprise suprise, its messy and not conscise.
