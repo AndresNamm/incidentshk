@@ -9,10 +9,12 @@ modified: 2016-08-01T09:36:36-04:00
 + [Code in Github](https://github.com/AndresNamm/Incident-Detection-Java/tree/master/src/main/java/bgt)
 + You can read more about the execution logic in the speedpanel integration part of [this document]({{site.baseurl}}/assets/files/detection.pdf)
 One of the key contributions of this dissertation was to integrate
-speedpanel data with GPS data. The speedpanel dataset consists of average speed observations in 2 minute time intervals. As the taxi dataset was available for year 2010, only speedpanels that were installed in year 2010 have been integrated as a data source to this project. The distribution of speedpanels in Hong Kong can be seen in Figure
+speedpanel data with GPS data. The speedpanel dataset consists of average speed observations in 2 minute time intervals. As the taxi dataset was available for year 2010, only speedpanels that were installed in year 2010 have been integrated as a data source to this project. The distribution of speedpanels in Hong Kong can be seen below
 
 
-![]({{site.baseurl}}/assets/images/diss/speedpanels.png)
+![]({{site.baseurl}}/assets/images/diss/speedpanels.png)  
+The road sensors analysed in this project are shown in beige. Newer road sensors installed after 2013 are shown in blue.
+
 
 # SPEED PANEL DATA TRANSFORMATION MODEL
 
