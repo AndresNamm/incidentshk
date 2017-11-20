@@ -46,8 +46,8 @@ The aim of this methodology is to classify observations into topics.  To do this
 In the generative model, every random variable except for the observation is considered to be latent. First, for each segment,
 
 
-+  a random variable Z (binary vector with only 1 element = 1) is drawn from a multinomial distribution which is dependent on parameter $\pi$. The multinomial distribution represents the probability over K different global traffic states in segment \texttt{S}
-+   based on the drawn Z, an observation is generated  from the Poisson distribution specified by Z. Each Poisson distribution over speeds is dependent on a global parameter $\mu$  
++  a random variable Z (binary vector with only 1 element = 1) is drawn from a multinomial distribution which is dependent on parameter $$\pi$$. The multinomial distribution represents the probability over K different global traffic states in segment \texttt{S}
++   based on the drawn Z, an observation is generated  from the Poisson distribution specified by Z. Each Poisson distribution over speeds is dependent on a global parameter $$\mu$$  
 
 This process can be visualised with a simple graphical model shown on Figure \ref{graph_model}. Equivalently this model also means that every segment is considered as a mixture of traffic states which by themselves are distributions, thus every segment is a mixture model.
 
@@ -60,11 +60,11 @@ The likelihood function for observations of speed-values for the entire set of o
 
 $$L(\mu, \pi; X)=\prod_{1}^{S} \prod_{1}^{N_{s}}  \sum_{1}^{K}p(x_{sn} \vert \mu_{k})p(\pi_{sk})$$
 
-It can be interpreted as: For each road segment, for each observation, what is the combined likelihood of drawing observations X with parameters $\mu$ and $\pi$.
+It can be interpreted as: For each road segment, for each observation, what is the combined likelihood of drawing observations X with parameters $$\mu$$ and $$\pi$$.
 
 
 
-There are two significant parameters in this model. The local segment parameter $\pi$, which affects how traffic states are distributed in each segment, and the traffic state parameter  $\mu$ for each of the K traffic states. Having established this generative model to the data, there exist multiple techniques to optimise the parameters of this model to the data. It is important to make a difference between the random variables (X -observed , Z-latent) and the point estimated parameters ($\mu$ and $\pi$).
+There are two significant parameters in this model. The local segment parameter $$\pi$$, which affects how traffic states are distributed in each segment, and the traffic state parameter  $$\mu$$ for each of the K traffic states. Having established this generative model to the data, there exist multiple techniques to optimise the parameters of this model to the data. It is important to make a difference between the random variables (X -observed , Z-latent) and the point estimated parameters ($$\mu$$ and $$\pi$$).
 
 
 ### Bayes background
@@ -79,17 +79,17 @@ $$\stackrel{\text{Posterior}}{P(\theta \vert data)}=\frac{\stackrel{\text{Likeli
 
 
  All the elements in the above formula are dependent on a chosen model. The model becomes important for the margin to explain what the probability of data is. It is the probability of the data based on the model and chosen parameters.  
-Here, the Bayesian approach would also theoretically work out. To do that, it would be necessary to consider the parameters $\mu$ and $\pi$ in addition to the segment distribution variable Z as random variables. The general application
+Here, the Bayesian approach would also theoretically work out. To do that, it would be necessary to consider the parameters $$\mu$$ and $$\pi$$ in addition to the segment distribution variable Z as random variables. The general application
 of  the Bayes formula in this case would look like this  
 $$
 p(\theta, Z | x) = \frac{p(\theta, z, x )}{p(x)}
 $$
-In this formula $\theta$ is considered  as the set of all parameters an $Z$ is considered as  latent random variables which show the cluster of or class of the observation (e.g. which Poisson distribution generated the observation). The likelihood of the data in the above formula's denominator which is also considered the normalising factor or the marginal becomes intractable to compute in real life with more complex models. Thus approximation methods like the Variational inference or Monte Carlo sampling should be used \cite{blei2003latent}. In this case a more simple approximation was chosen in the face of the Expectization Maximization (EM) algorithm. This method resembles more the variational inference based methods but only gives point estimates to the parameters $\mu$ and $\pi$.
+In this formula $$\theta$$ is considered  as the set of all parameters an $$Z$$ is considered as  latent random variables which show the cluster of or class of the observation (e.g. which Poisson distribution generated the observation). The likelihood of the data in the above formula's denominator which is also considered the normalising factor or the marginal becomes intractable to compute in real life with more complex models. Thus approximation methods like the Variational inference or Monte Carlo sampling should be used \cite{blei2003latent}. In this case a more simple approximation was chosen in the face of the Expectization Maximization (EM) algorithm. This method resembles more the variational inference based methods but only gives point estimates to the parameters $$\mu$$ and $$\pi$$.
 
 
 ### Approximation Methodology
 
-The goal for the used EM algorithm is simply to give a point estimate for the parameters $\mu$ and $\pi$ from the observations so $p(x)$. The straight log-likelihood maximisation for the parameters $p(X \mid  \theta)=\sum^{N}_{i=1}{log p(x,\theta)}$ is difficult because of all the possible classes each observation could come from. However the nature of the above-presented model allows to divide the parameter estimation into two steps. More explicitly we can repeatedly construct a lower-bound on the log-likelihood function (E-step), and then optimise that lower-bound (M-step). This approach follows the logic of the EM algorithm. The exact formulas for approximation in the E-step and M-step are brought out in the method-proposing paper and are left out from this dissertation for the sake of clarity. The general idea for the approximation goes like this: First ther is the E-step. In this step, the Expectation for the complete dataset (X,Z) is calculated. To do that,  the posterior probability of Z given X is calculated. This can be seen as the responsibility that component k takes for ‘explaining’ the observation x. The calculated posterior probability for Z used in a specific combination with the parameters likelihood allows through the usage of Jensen's equality to derive a lower bound for the likelihood function. This lower bound can then maximized in the M-step. Going  iteratively through E-step and M-step monotonically increases the likelihood function.
+The goal for the used EM algorithm is simply to give a point estimate for the parameters $$\mu$$ and $$\pi$$ from the observations so $$p(x)$$. The straight log-likelihood maximisation for the parameters $$p(X \mid  \theta)=\sum^{N}_{i=1}{log p(x,\theta)}$$ is difficult because of all the possible classes each observation could come from. However the nature of the above-presented model allows to divide the parameter estimation into two steps. More explicitly we can repeatedly construct a lower-bound on the log-likelihood function (E-step), and then optimise that lower-bound (M-step). This approach follows the logic of the EM algorithm. The exact formulas for approximation in the E-step and M-step are brought out in the method-proposing paper and are left out from this dissertation for the sake of clarity. The general idea for the approximation goes like this: First ther is the E-step. In this step, the Expectation for the complete dataset (X,Z) is calculated. To do that,  the posterior probability of Z given X is calculated. This can be seen as the responsibility that component k takes for ‘explaining’ the observation x. The calculated posterior probability for Z used in a specific combination with the parameters likelihood allows through the usage of Jensen's equality to derive a lower bound for the likelihood function. This lower bound can then maximized in the M-step. Going  iteratively through E-step and M-step monotonically increases the likelihood function.
 
 
 
@@ -105,7 +105,7 @@ Currently the proposed model estimates the parameters in all the locations as po
 
 ### Poisson to Gaussian
 
-Essentially when speed observations are the only input to the model, the training deals with finding an average $\lambda$ for each of the K traffic states and then mixing these averages together on each road. Based on that, the choice of Poisson distribution is suprising because it is distribution which gives a probability to a number of occurences of a specific situation, not the probability of the occurence itself. Here a Gaussian distribution with two parameters instead of one for the Poisson distribution would be naturally more suitable because for such data the standard deviation is also an important consideration.This is what the Poisson Mixture model completely misses. Using Gaussian Mixtures together with the EM algorithm is a standard pratice in machine learning and both point estimate and inference methods have been developed for it \cite{emgupta}´ \cite{ngemalgo}.
+Essentially when speed observations are the only input to the model, the training deals with finding an average $$\lambda$$ for each of the K traffic states and then mixing these averages together on each road. Based on that, the choice of Poisson distribution is suprising because it is distribution which gives a probability to a number of occurences of a specific situation, not the probability of the occurence itself. Here a Gaussian distribution with two parameters instead of one for the Poisson distribution would be naturally more suitable because for such data the standard deviation is also an important consideration.This is what the Poisson Mixture model completely misses. Using Gaussian Mixtures together with the EM algorithm is a standard pratice in machine learning and both point estimate and inference methods have been developed for it \cite{emgupta}´ \cite{ngemalgo}.
 
 
 ### Start modeling anomalies
