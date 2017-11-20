@@ -2,8 +2,17 @@
 title: "Experiment Results Summary"
 ---
 
-# Short Report On Results
+<!---
+This is copy paste material to make preview with atom possible but also compatible for gh-pages.
 
+Before replacing, delete the asterisk
+
++ gh-pages - {*{site.baseurl}}
++ atom - http:/*/localhost:4000/incidentshk/
+
+-->
+
+# Short Report On Results
 
 [GOOGLE SHEETS: Results for GPS and Speedpanels](https://docs.google.com/spreadsheets/d/1XxEkbyDGgT0nbgzRaYLs8ojEbQ_fRZrx2aGKWmXn_o4/edit?usp=sharing)
 

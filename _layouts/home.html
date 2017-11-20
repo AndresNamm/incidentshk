@@ -2,7 +2,13 @@
 layout: archive
 ---
 
+To get in touch how the structure of this webpage aims to present information,
+start with the <a style="color:blue" href="{{site.baseurl}}/about/">About</a> section.
+
+
+
 <h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
+
 
 {% for post in paginator.posts %}
   {% include archive-single.html %}

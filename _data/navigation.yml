@@ -4,14 +4,14 @@ main:
     url: /about/
   - title: Preprocessing
     url: /preprocessing/
-  - title: "LDA implementation"
+  - title: "Traffic Modeling Methodology"
     url: /lda/
   - title: "Result Analysis"
     url: /result/
   # - title: "Sitemap"
   #   url: /sitemap/
-  
-  
+
+
 lda:
   - title: "Bayes Method Background"
     url: /lda/bayes/
