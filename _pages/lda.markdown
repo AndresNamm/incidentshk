@@ -50,6 +50,6 @@ I think these are good starting points for understanding Topic Modeling. At leas
 
 + The code which trains the Topic Model for Hong Kong Traffic is available in [Github](https://github.com/AndresNamm/Incident-Detection-Model-Training-)
 
-+ Incident detection code which uses the trained model is also available at  [Github](https://github.com/AndresNamm/Incident-Detection-Java/tree/master/src/main/java/bgt/IncidentDetection)
++ Incident detection code which uses the trained model is also available in [Github](https://github.com/AndresNamm/Incident-Detection-Java/tree/master/src/main/java/bgt/IncidentDetection)
 
 So far,  I have created a [tutorial](https://andresnamm.github.io/blog/formating/2017/08/03/C++BOOST.html) for setting up for windows the C++ enviroment to run this code. Suprise suprise, its messy and not conscise.
