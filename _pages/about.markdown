@@ -1,8 +1,9 @@
 ---
 title: About
 permalink: /about/
+header:
+    overlay_image: /assets/images/grid.png
 ---
-
 
 
 The goal of this project is to develop an automatic real time incident detection System for Hong Kong. I.e. an application which tells you whether any given moment in any given road there is an accident. This project is very similiar to what Google does, however in addition to GPS data I have included Road Sensor data into our analysis. [A quick intro to this project via a poster]({{site.baseurl}}/assets/files/poster.pdf)
